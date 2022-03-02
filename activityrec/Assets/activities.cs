@@ -14,13 +14,14 @@ public class activities : MonoBehaviour
         //}
     //}
     // Start is called before the first frame update
+    // Choose random activity
     void Start()
     {
         AnimatorControllerParameter[] parameters = anim.parameters;
-        //Debug.Log(parameters.Length);
         int paramIndex = Random.Range(0,parameters.Length);
         Debug.Log(paramIndex);
         anim.SetBool(parameters[paramIndex].name, true);
+        Debug.Log(parameters[paramIndex].name);
         
     }
 
