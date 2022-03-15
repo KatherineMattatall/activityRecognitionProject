@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 0943e7338172ab84c8caa63ca3c0d93a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - anim: {instanceID: 0}
+  - LeonardChar: {fileID: 3820068100223641778, guid: 4a72a51892397f049b7e0583ac50b811,
+      type: 3}
+  - ElizabethChar: {fileID: 1063215595161079456, guid: 18cef52933b78cb4db813aa4906f1ae3,
+      type: 3}
+  - LewisChar: {fileID: 6454402884759644136, guid: 30b3c3f3ce4e393439457ee78c7253b6,
+      type: 3}
+  - SophieChar: {fileID: 5796373931136431453, guid: 9a4e3f7db25072b499a153a90085644d,
+      type: 3}
+  - StreetRoad: {fileID: 145004, guid: b74054c7819af8a458ae5a11853280ac, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
