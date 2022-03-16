@@ -6,7 +6,7 @@ public class activities : MonoBehaviour
 {
     //public Animator anim;
     public string chosenAnim;
-    string[] possibleActivities = new string[]{"tripping","runningFromBuilding","hitByCar","seizing","stealingCar","arguing"};
+    string[] possibleActivities = new string[]{"tripping","runningFromBuilding","hitByCar","seizing","stealingCar","arguing","jaywalking"};
 
     //void Awake()
     //{
