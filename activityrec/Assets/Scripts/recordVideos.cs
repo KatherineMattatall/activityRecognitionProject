@@ -17,7 +17,8 @@ public class recordVideos : MonoBehaviour
     public GameObject ArguingChar;
     public string activity;
     public GameObject StreetRoad;
-    float randomZ;
+    float zVal;
+    //float randomZ;
 
     // Start is called before the first frame update
     void Start()
@@ -48,29 +49,34 @@ public class recordVideos : MonoBehaviour
         if (activity == "tripping" || activity == "seizing" || activity == "arguing") {
             var tempPrefab = Selection.activeGameObject;
             int leftOrRight = Random.Range(1,3);
+            float randomX = Random.Range(94,83.7f);
             if (leftOrRight == 1) {
-                randomZ = Random.Range(11,-0.55f);
+                // left side of street
+                zVal = 93.7f;
             }
             else{
-                randomZ = Random.Range(-13,-21);
+                //randomZ = Random.Range(-13,-21);
+                zVal = 106.3f;
             }
-            tempPrefab.transform.position = new Vector3(-0.85f,0.125f,randomZ);
-            int rotateLeftOrRight = Random.Range(1,3);
-            if (rotateLeftOrRight == 1) {
-                //face left
-                tempPrefab.transform.rotation = Quaternion.identity;
+            //tempPrefab.transform.position = new Vector3(-0.85f,0.125f,randomZ);
+            tempPrefab.transform.position = new Vector3(randomX,0.225f,zVal);
+            //int rotateLeftOrRight = Random.Range(1,3);
+            int faceFrontOrBack = Random.Range(1,3);
+            if (faceFrontOrBack == 1) {
+                //face front
+                tempPrefab.transform.Rotate(0,270,0);
             }
             else{
-                //face right
-                tempPrefab.transform.rotation = new Quaternion(0,180,0,0);
+                //face back
+                tempPrefab.transform.Rotate(0,90,0);
             }
             if (activity == "arguing"){
-                if (rotateLeftOrRight == 1){
-                    //pedestrian needs to face right and be further left if character is facing left
-                    Instantiate(ArguingChar, new Vector3(-0.85f,0.125f,randomZ+1), new Quaternion(0,180,0,0));
+                if (faceFrontOrBack == 1){
+                    //pedestrian needs to face back and be further ahead if character is facing frontwards
+                    Instantiate(ArguingChar, new Vector3(randomX-1,0.225f,zVal), Quaternion.Euler(0,90,0));
                 }
-                else{
-                    Instantiate(ArguingChar, new Vector3(-0.85f,0.125f,randomZ-1), Quaternion.identity);
+                else{;
+                    Instantiate(ArguingChar, new Vector3(randomX+1,0.225f,zVal), Quaternion.Euler(0,270,0));
                 }
 
             }
@@ -79,8 +85,18 @@ public class recordVideos : MonoBehaviour
         }
         if (activity == "runningFromBuilding") {
             var tempPrefab = Selection.activeGameObject;
-            tempPrefab.transform.position = new Vector3(13,0.125f,8.5f);
-            tempPrefab.transform.Rotate(0,270,0);
+            int leftOrRight = Random.Range(1,3);
+            float randomX = Random.Range(94,83.7f);
+            if (leftOrRight == 1) {
+                // left side of street
+                zVal = 81.5f;
+                tempPrefab.transform.rotation = Quaternion.identity;
+            }
+            else{
+                zVal = 118.5f;
+                tempPrefab.transform.Rotate(0,180,0);
+            }
+            tempPrefab.transform.position = new Vector3(randomX,0.225f,zVal);
         anim = tempPrefab.GetComponent<Animator>();
         anim.SetBool(activity, true);
         }
@@ -93,7 +109,6 @@ public class recordVideos : MonoBehaviour
             else{
                 tempPrefab.transform.position = new Vector3(-0.85f,0.125f,Random.Range(-13,-21));
             }
-            //tempPrefab.transform.rotation = new Quaternion(0,270,0,0);
             tempPrefab.transform.Rotate(0,270,0);
         anim = tempPrefab.GetComponent<Animator>();
         anim.SetBool(activity, true);
@@ -105,7 +120,6 @@ public class recordVideos : MonoBehaviour
         anim = tempPrefab.GetComponent<Animator>();
         anim.SetBool(activity, true);
         }
-        //Record();
         StartCoroutine(waiter());
     }
 
@@ -123,12 +137,12 @@ public class recordVideos : MonoBehaviour
         
         videoRecorder.ImageInputSettings = new GameViewInputSettings
         {
-            OutputWidth = 640,
-            OutputHeight = 480
+            OutputWidth = 320,
+            OutputHeight = 320
         };
         
         videoRecorder.AudioInputSettings.PreserveAudio = true;
-        videoRecorder.OutputFile = "C:\\Users\\matta\\Downloads\\activityVideos\\"+activity+"\\"+Random.Range(0,100000);
+        videoRecorder.OutputFile = "C:\\Users\\matta\\Downloads\\activityVideoTester\\"+activity+"\\"+Random.Range(0,100000);
         
         controllerSettings.AddRecorderSettings(videoRecorder);
         //controllerSettings.SetRecordModeToFrameInterval(0, 300);
@@ -142,7 +156,6 @@ public class recordVideos : MonoBehaviour
         controllerSettings.RemoveRecorder(videoRecorder);
         FindObjectOfType<GameManager>().Restart();
 
-       // StartCoroutine(waiter());
         
     }
 

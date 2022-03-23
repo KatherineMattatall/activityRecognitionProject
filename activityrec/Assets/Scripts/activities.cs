@@ -6,7 +6,8 @@ public class activities : MonoBehaviour
 {
     //public Animator anim;
     public string chosenAnim;
-    string[] possibleActivities = new string[]{"tripping","runningFromBuilding","hitByCar","seizing","stealingCar","arguing","jaywalking"};
+    //string[] possibleActivities = new string[]{"tripping","runningFromBuilding","hitByCar","seizing","stealingCar","arguing","jaywalking"};
+    string[] possibleActivities = new string[]{"tripping","runningFromBuilding","seizing","arguing"};
 
     //void Awake()
     //{
@@ -21,7 +22,7 @@ public class activities : MonoBehaviour
         int index = Random.Range(0,possibleActivities.Length);
         chosenAnim = possibleActivities[index];
         //Debug.Log(paramIndex);
-        //Debug.Log("hello");
+        Debug.Log(chosenAnim);
         //anim.SetBool(parameters[paramIndex].name, true);
         //Debug.Log(parameters[paramIndex].name);
         //chosenAnim = parameters[paramIndex].name;
