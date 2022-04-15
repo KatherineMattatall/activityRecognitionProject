@@ -7,8 +7,6 @@ public class randomizer : MonoBehaviour
 {
     public Light sunLight;
 
-
-    // Start is called before the first frame update
     public int randomize()
     {
         //random light rotation and intensity

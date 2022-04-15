@@ -4,29 +4,14 @@ using UnityEngine;
 
 public class activities : MonoBehaviour
 {
-    //public Animator anim;
     public string chosenAnim;
-    //string[] possibleActivities = new string[]{"tripping","runningFromBuilding","hitByCar","seizing","stealingCar","arguing","jaywalking"};
-    string[] possibleActivities = new string[]{"tripping","runningFromBuilding","seizing","arguing"};
+    string[] possibleActivities = new string[]{"tripping","runningFromBuilding","seizing","arguing"}; //add all activities here
 
-    //void Awake()
-    //{
-       // anim = GetComponent<Animator>();
-    //}
-
+    //chooses a random activity from the list of possible activities and returns it
     public string chooseActivity()
     {
-        //AnimatorControllerParameter[] parameters = anim.parameters;
-        //Debug.Log(anim.parameters);
-        //int paramIndex = Random.Range(0,parameters.Length);
         int index = Random.Range(0,possibleActivities.Length);
         chosenAnim = possibleActivities[index];
-        //Debug.Log(paramIndex);
-        Debug.Log(chosenAnim);
-        //anim.SetBool(parameters[paramIndex].name, true);
-        //Debug.Log(parameters[paramIndex].name);
-        //chosenAnim = parameters[paramIndex].name;
-
         return chosenAnim;
         
     }
